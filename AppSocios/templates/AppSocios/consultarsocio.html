@@ -1,0 +1,34 @@
+{% extends "appxppal/layout.html" %}
+{% load static %}   
+{% block title %}Consulta de Socio{% endblock title %}
+{% block addcss %}{% endblock addcss %}
+{% block content %}
+<div class="col-sm-6 mx-auto">
+  <div class="card mt-3 mb-3">
+    <div class="card-header">
+      <h3 class="text-center">{{ titulo }}</h3>
+      <hr><hr>
+    <div class="card-body">
+        <form method="POST" action="" id="formemp">
+            {% csrf_token %}
+            {% for field  in form.visible_fields %}
+            <div class="mb-3 row">
+              <label for="inputPassword" class="col-sm-4 col-form-label">{{ field.label}}</label>
+              <div class="col-sm-8">
+                {{ field }}
+              </div>
+            </div>
+            {% endfor %}
+            <br>
+          </form>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+{% block addjs %}{% endblock addjs %}
+{% block jquery %}
+{% include "AppSocios/ctrlconsultarsocio.html" %}
+{% endblock jquery %}
+
+
+

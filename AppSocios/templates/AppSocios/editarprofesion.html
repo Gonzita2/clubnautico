@@ -1,0 +1,26 @@
+<h1>{{ titulo }}</h1>
+<form action="" method="POST">
+    {% csrf_token %}
+    {% for fields in  form.visible_fields %}
+    {{ fields.label }}
+    {{ fields }}
+    <button type="submit">Guardar</button>
+</form>
+{% endfor %}
+{% if  mensaje %}
+<script type="text/javascript">
+    alert("Cargo Editado");
+    window.location.href = '/appempleados/listarcargos';
+</script>
+{% elif  form.errors %}
+<script type="text/javascript">
+  var errores="";
+  {% for field in form %}
+    {% for myerror in field.errors %}
+      errores = '{{myerror}}\n'
+    {% endfor %}
+  {% endfor %}
+    alert("ha Ocurrido un error"+ errores);
+    window.location.href = '/appempleados/listarcargos';
+  </script>
+{% endif %}

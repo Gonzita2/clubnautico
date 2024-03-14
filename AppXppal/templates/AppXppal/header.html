@@ -1,0 +1,101 @@
+<header>
+    <!-- Header Start -->
+    <div class="header-area">
+        <div class="main-header ">
+            <div class="header-top black-bg d-none d-sm-block">
+                <div class="container">
+                    <div class="col-xl-12">
+                        <div class="row d-flex justify-content-between align-items-center">
+                            <div class="header-info-left">
+                                <ul>
+                                    <li class="title"><span class="flaticon-energy"></span> trending-title</li>
+                                    <li><h5 class="text-white">Bienvenido--{{ user.username}}</h5></li>                          
+                                </ul>
+                            </div>
+                            <div class="header-info-right">
+                                <ul class="header-date">
+                                    <li><span class="flaticon-calendar"></span> +880166 253 232</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header-bottom header-sticky">
+                <div class="container mt-1">
+                    <div class="row align-items-center">
+                        <div class="col-xl-12 col-lg-12 col-md-12 header-flex">
+                            <!-- sticky -->
+                            <div class="sticky-logo">
+                                <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                            </div>
+                            <!-- Main-menu -->
+                            <div class="main-menu d-none d-md-block">
+                                <nav>
+                                    <ul id="navigation">
+                                        <li><a href="{% url "inicio" %}">inicio</a></li>
+                                        {% if perms.auth_user.add_user%}
+                                        <li><a href="#">Usuarios</a>
+                                            <ul class="submenu">
+                                                <li><a href="{% url "crearusuario" %}">Registrar</a></li>
+                                                <li><a href="{% url "listarusuarios" %}">Listar Usuarios</a></li>
+                                                <li><a href="{% url "infousuario"%}">Mi Informacion</a></li>
+                                            </ul>
+                                        </li>
+                                        {% endif %}
+                                        <li><a href="#">Empleados</a>
+                                            <ul class="submenu">
+                                                {% if perms.AppEmpleados.add_empleados %}
+                                                <li><a href="{% url "crearempleado" %}">Registrar</a></li>
+                                                {% endif %}
+                                                {% if perms.AppEmpleados.view_empleados %}
+                                                <li><a href="{% url "listarempleados" %}">Listar</a></li>
+                                                {% endif  %}
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">Socios</a>
+                                            <ul class="submenu">
+                                                {% if perms.AppSocios.add_socios %}
+                                                <li><a href="{% url "crearsocio" %}">Registrar</a></li>
+                                                {% endif  %}
+                                                {% if perms.AppSocios.view_socios %}
+                                                <li><a href="{% url "listarsocios" %}">Listar</a></li>
+                                                {% endif  %}
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">Capitanes</a>
+                                            <ul class="submenu">
+                                                {% if perms.AppSocios.add_socios %}
+                                                <li><a href="{% url "crearcapitan" %}">Registrar</a></li>
+                                                {% endif  %}
+                                                {% if perms.AppSocios.view_socios %}
+                                                <li><a href="{% url "listarcapitanes" %}">Listar</a></li>
+                                                {% endif  %}
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">Embarcaciones</a>
+                                            <ul class="submenu">
+                                                <li><a href="{% url "crearembarcacion" %}">Registrar</a></li>
+                                                <li><a href="{% url "listarembarcaciones" %}">Listar</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="/admin" target="_blank">Admin</a></li>
+                                        {% if user.is_authenticated %}
+                                        <li><a href="{% url "logout" %}">Logout</a></li>
+                                        {% endif  %}
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        
+                        <!-- Mobile Menu -->
+                        <div class="col-12">
+                            <div class="mobile_menu d-block d-md-none"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+</header>

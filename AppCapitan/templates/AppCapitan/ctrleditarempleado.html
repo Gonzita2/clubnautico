@@ -1,0 +1,25 @@
+<script type="text/javascript">
+  $("#id_cedula").attr("readonly", true)
+</script>
+{% if  mensaje %}
+<script type="text/javascript">
+  Swal.fire({
+    icon: 'success',
+    title: 'Mensaje de Exito',
+    text: 'Informacion de Empleado Actualizada',
+}).then(function() {
+  window.location.href = '/appempleados/listarempleados';
+});
+</script>
+{% elif  form.errors %}
+<script type="text/javascript">
+  var errores="";
+  {% for field in form %}
+    {% for myerror in field.errors %}
+      errores = '{{myerror}}\n'
+    {% endfor %}
+  {% endfor %}
+    alert("ha Ocurrido un error"+ errores);
+    window.location.href = '/appempleados/listarempleados';
+  </script>
+{% endif %}

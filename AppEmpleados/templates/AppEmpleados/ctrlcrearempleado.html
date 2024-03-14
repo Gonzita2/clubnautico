@@ -1,0 +1,35 @@
+<script type="text/javascript">
+    $('#id_cedula').change(function(e) {
+      e.preventDefault();
+      
+      var micedula = $(this).val();
+      $.ajax({
+        url: "/empleados/crearempleadoajax/"+$(this).val()+"",
+        type: "GET",
+        datatype: "json",
+        
+        success: (response) => {
+            if (response.status == 1) {
+              Swal.fire({
+                icon: 'error',
+                title: 'Mensaje de Error',
+                text: 'El Documento ya se encuentra Registrado',
+            }).then(function() {
+              window.location.href = "/empleados/crearempleado/"
+          });
+            } else if(response.status == 0){
+              //alert("sigue")
+            }else {
+              
+              }
+            },
+        error: function(response){
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Error Inesperado. Consulte al administrador',
+        })
+        }
+    });
+    });
+</script>

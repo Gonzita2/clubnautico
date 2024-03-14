@@ -1,0 +1,29 @@
+<script type="text/javascript">
+    $('#id_matricula').change(function(e) {
+      e.preventDefault();
+      
+      var matricula = $(this).val();
+      $.ajax({
+        url: "/embarcaciones/crearembarcacionajax/"+$(this).val()+"",
+        type: "GET",
+        datatype: "json",
+        
+        success: (response) => {
+            if (response.status == 1) {
+              Swal.fire({
+                icon: 'error',
+                title: 'Mensaje de Error',
+                text: 'La Matricula ya se encuentra Registrada',
+            }).then(function() {
+              window.location.href = "/embarcaciones/crearembarcacion/"
+          });
+            } else if(response.status == 0){
+              //alert("sigue")
+            }else {
+              
+              }
+            },
+       
+    });
+    });
+</script>

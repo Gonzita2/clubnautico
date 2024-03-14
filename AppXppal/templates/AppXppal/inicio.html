@@ -1,0 +1,15 @@
+{% extends "AppXppal/layout.html" %}
+{% load static %}   
+{% block title %}Consulta de Socio{% endblock title %}
+{% block addcss %}{% endblock addcss %}
+{% block content %}
+<div class="col-sm-12">
+    <h1 class="text-warning mt-3 text-center">Club Nautico La Rivera</h1>
+    <h3 class="text-warning text-center">(Sitio para Compartir y Disfrutar)</h3>
+    
+    <img class="img-fluid rounded d-block mt-5 px-2" alt="..." src="{% static 'AppXppal/img/miclub2.webp' %}" >
+{% endblock content %}
+{% block addjs %}{% endblock addjs %}
+{% block jquery %}
+{% include "AppSocios/ctrlconsultarsocio.html" %}
+{% endblock jquery %}

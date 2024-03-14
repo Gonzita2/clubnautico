@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="auto">
+  {% load static %}
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="" />
+  <meta name="author" content="Carlos Gonzalez" />
+  <title>{% block title%}{% endblock title %}</title>
+  {% include 'AppXppal/css.html' %}
+  {% block addcss %}{% endblock addcss %}
+  <link href="{% static 'AppXppal/css/miestilo.css' %}" rel="stylesheet">
+</head>
+
+<body class="bg-success2">
+  <div class="container">
+  {% include 'AppXppal/header.html' %}
+  </div>
+  <div class="container bg-success mb-3 mt-3 ">
+    <div class="row altocuerpo">
+      {% block content %}
+      {% endblock content %}
+    </div>
+  </div>
+  {% include 'AppXppal/footer.html' %}
+  <script src="{% static 'AppXppal/js/jquery-3.5.1.min.js' %}"></script>
+  <script src="{% static 'AppXppal/js/bootstrap.min.js' %}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  {% block addjs %}
+  {% endblock addjs %}
+  {% include "AppXppal/mensajes.html" %}
+  {% block jquery %}
+  {% endblock jquery %}
+</body>
+
+</html>

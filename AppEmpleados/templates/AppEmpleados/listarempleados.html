@@ -1,0 +1,56 @@
+{% extends "AppXppal/layout.html" %}
+{% load static %}   
+{% block title %}Crear Empleado{% endblock title %}
+{% block addcss %}{% endblock addcss %}
+{% block content %}
+<div class="col-sm-12 mx-auto">
+  <div class="card mt-3 mb-1">
+    <div class="card-header">
+      <h3 class="text-center text-primary" >{{ titulo }}</h3>
+      <hr><hr>
+    <div class="card-body">
+        <table class="table">
+            <thead class="text-primary">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Cedula</th>
+                <th scope="col">Nombres</th>
+                <th scope="col">Apellidos</th>
+                <th scope="col">Telefono</th>
+                <th scope="col">Direccion</th>
+                <th scope="col">Cargo</th>
+                <th scope="col" colspan="2"></th>
+              </tr>
+            </thead>
+            <tbody>
+                {% if lista %}
+                {% for empleado in lista %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td><a class="text-primary" href="{% url "consultarempleado" empleado.id %}">{{ empleado.cedula}}</a></td>
+                    <td>{{ empleado.nombres}}</td>
+                    <td>{{ empleado.apellidos}}</td>
+                    <td>{{ empleado.telefono}}</td>
+                    <td>{{ empleado.direccion}}</td>
+                    <td>{{ empleado.cargo}}</td>
+                    <td>
+                    <a href="{% url 'editarempleado' empleado.id %}" class="btn btn-success px-5">Editar</a>
+                    </td>
+                </tr>
+                {% endfor %}   
+                {% else %}
+                <h2> No hay Empleados Registrados</h2>
+                {% endif %}  
+            </tbody>
+          </table>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+{% block addjs %}
+
+{% endblock addjs %}
+{% block jquery %}
+{% endblock jquery %}
+
+

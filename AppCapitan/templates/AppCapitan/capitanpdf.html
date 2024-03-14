@@ -1,0 +1,52 @@
+{% extends "AppXppal/layoutpdf.html" %}
+{% block content %}
+<div class="col-sm-7 mx-auto">
+    <div class="card mt-3 mb-3">
+      <div class="card-header">
+        <h3 class="text-center">{{ titulo }}</h3>
+        <hr><hr>
+      <div class="card-body">
+          <h1>Datos Registrados del Capitan</h1>
+          <table>
+            <tr>
+                <td>Cedula</td>
+                <td>{{ form.cedula}}</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Nombre y Apellidos</td>
+                <td>{{ form.nombres}} {{ form.apellidos}}</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Direccion</td>
+                <td>{{ form.direccion}}</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Ciudad/Depart</td>
+                <td>{{ form.ciudad}} - {{ form.departamento}}</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Telefono</td>
+                <td>{{ form.telefono}}</td>
+                <td></td>
+            </tr>
+            <tr>
+              <td>Email</td>
+              <td>{{ form.email}}</td>
+              <td></td>
+          </tr>
+          <tr>
+            <td>Fecha Nto. - Edad</td>
+            <td>{{ form.fecha_nto}}  Edad {{ miedad }}</td>
+            <td colspan="7"><img src=""></td>
+        </tr>
+          </table>
+          
+      </div>
+    </div>
+  </div>
+{% endblock content %}
+

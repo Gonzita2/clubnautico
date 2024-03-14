@@ -1,0 +1,26 @@
+{% extends "AppXppal/layout.html" %}
+{% load static %}   
+{% block title %}Registrar Embarcacion{% endblock title %}
+{% block addcss %}{% endblock addcss %}
+{% block content %}
+<div class="col-sm-6 mx-auto mt-5">
+    <div class="card" style="width: 32rem;">
+        <img src="/media/{{ imagen }}" class="card-img-top mt-3 px-5 imagenconsulta" alt="...">
+        <div class="card-body">
+          <h4 class="card-title">Datos de la Embarcacion</h4>
+          {% for field  in form.visible_fields %}
+            <div class="mb-3 row">
+              <label for="inputPassword" class="col-sm-4 col-form-label">{{ field.label}}</label>
+              <div class="col-sm-8">
+                {{ field }}
+              </div>
+            </div>
+            {% endfor %}
+        </div>
+      </div>
+</div>
+{% endblock content %}
+{% block addjs %}{% endblock addjs %}
+{% block jquery %}
+
+{% endblock jquery %}

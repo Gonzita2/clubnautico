@@ -1,0 +1,22 @@
+<h1>{{ titulo }}</h1>
+{% if lista  %}
+<table>
+    <thead>
+        <th>#</th>
+        <th>Descripcion</th>
+        <th scope="col" colspan="2" >Opsiones</th>
+    </thead>
+    <tbody>
+        {% for mylist in lista %}
+        <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{ mylist.cargo}}</td>
+            <td><a href="{% url "editarcargo" mylist.id %}">Editar</a></td>
+            <td><a href="{% url "eliminarcargo" mylist.id %}">Eliminar</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<h3>No Hay Cargos Registrado</h3>
+{% endif %}

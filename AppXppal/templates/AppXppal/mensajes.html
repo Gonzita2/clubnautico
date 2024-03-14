@@ -1,0 +1,27 @@
+{% if mensaje %}
+  <script type="text/javascript">
+    Swal.fire({
+        icon: 'success',
+        title: 'Mensaje de Exito!',
+        text: '{{mensaje}}',
+    }).then(function() {
+      window.location.href = '{{myurl}}';
+  });
+</script>
+{% elif  form.errors %}
+<script type="text/javascript">
+  var errores="";
+  {% for field in form %}
+    {% for myerror in field.errors %}
+      errores = '{{myerror}}\n'
+    {% endfor %}
+  {% endfor %}
+  Swal.fire({
+    icon: 'error',
+    title: 'Mensaje de error',
+    text: errores,
+  }).then(function() {
+            
+        });
+  </script>
+{% endif %}

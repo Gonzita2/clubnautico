@@ -1,0 +1,58 @@
+{% extends "AppXppal/layout.html" %}
+{% load static %}   
+{% block title %}Listar Embarcaciones{% endblock title %}
+{% block addcss %}{% endblock addcss %}
+{% block content %}
+<div class="col-sm-12 mx-auto">
+  <div class="card mt-3 mb-1">
+    <div class="card-header">
+      <h3 class="text-center">{{ titulo }}</h3>
+      <hr>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Matricula</th>
+                <th scope="col">Nombres</th>
+                <th scope="col">tipo</th>
+                <th scope="col">amarre</th>
+                <th scope="col">modelo</th>
+                <th scope="col">propietario</th>
+                <th scope="col">Foto</th>
+                <th scope="col" colspan="2"></th>
+              </tr>
+            </thead>
+            <tbody>
+                {% if lista %}
+                {% for embarcacion in lista %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td><a href="{% url "consultarembarcacion" embarcacion.matricula %}">
+                      <span class="text-success">{{ embarcacion.matricula}}</span>
+                    </a></td>
+                    <td>{{ embarcacion.nombres}}</td>
+                    <td>{{ embarcacion.tipo}}</td>
+                    <td>{{ embarcacion.amarre}}</td>
+                    <td>{{ embarcacion.modelo}}</td>
+                    <td>{{ embarcacion.propietario}}</td>
+                    <td><img class="fototable" src="/media/{{ embarcacion.foto}}"></td>
+                    <td>
+                    <a href="{% url 'editarembarcacion' embarcacion.matricula %}" class="btn btn-success px-5">Editar</a>
+                    </td>
+                </tr>
+                {% endfor %}   
+                {% else %}
+                <h2> No hay Empleados Registrados</h2>
+                {% endif %}  
+            </tbody>
+          </table>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+{% block addjs %}
+
+{% endblock addjs %}
+{% block jquery %}
+{% endblock jquery %}
