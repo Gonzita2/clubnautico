@@ -25,9 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-ez)$)og61q^s16-xsvcc4atxg_yl2qymbc8)n-ae%xsyn*!g02'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['172.0.0.1', 'Gonzita.pythonanywhere.com']
 
 # Direccion de Conexion a pagina Inicial
 LOGIN_REDIRECT_URL = '/inicio/'
